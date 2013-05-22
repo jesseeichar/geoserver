@@ -16,6 +16,7 @@ import org.geoserver.catalog.DataStoreInfo;
 import org.geoserver.catalog.NamespaceInfo;
 import org.geoserver.catalog.WorkspaceInfo;
 import org.geoserver.config.GeoServer;
+import org.geoserver.config.LayerGroupWorkspaceInclusion;
 import org.geoserver.config.SettingsInfo;
 import org.geoserver.data.test.MockData;
 import org.geoserver.web.GeoServerWicketTestSupport;
@@ -157,6 +158,25 @@ public class WorkspaceEditPageTest extends GeoServerWicketTestSupport {
         form.submit();
 
         assertEquals(false, settings.isLocalWorkspaceIncludesPrefix());
+    }
+
+    @Test
+    public void testLayerGroupsInclusion() throws Exception {
+        GeoServer gs = getGeoServer();
+        SettingsInfo settings = gs.getFactory().createSettings();
+        settings.setLayerGroupInclusion(LayerGroupWorkspaceInclusion.ALL_CONTAINED);
+        settings.setWorkspace(citeWorkspace);
+        gs.add(settings);
+
+        assertNotNull(gs.getSettings(citeWorkspace));
+        tester.startPage(new WorkspaceEditPage(citeWorkspace));
+        tester.assertRenderedPage(WorkspaceEditPage.class);
+
+        FormTester form = tester.newFormTester("form");
+        form.setValue("settings:settingsContainer:otherSettings:layerGroupInclusion", LayerGroupWorkspaceInclusion.ALL.toString());
+        form.submit();
+
+        assertEquals(LayerGroupWorkspaceInclusion.ALL, settings.getLayerGroupInclusion());
     }
 
     @Test

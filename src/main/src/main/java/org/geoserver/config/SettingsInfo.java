@@ -156,4 +156,20 @@ public interface SettingsInfo extends Info {
      *            if true then the prefixes will be kept, default behaviour is to remove it.
      */
     void setLocalWorkspaceIncludesPrefix(boolean includePrefix);
+
+    /**
+     * Returns the value controlling what LayerGroups are included in a LocalWorkspaceCatalog.
+     *
+     * @see LayerGroupWorkspaceInclusion
+     */
+    LayerGroupWorkspaceInclusion getLayerGroupInclusion();
+
+    /**
+     * Set the LayerGroup inclusion setting.
+     *
+     * @param newInclusion The new setting value
+     *
+     * @see LayerGroupWorkspaceInclusion
+     */
+    void setLayerGroupInclusion(LayerGroupWorkspaceInclusion newInclusion);
 }

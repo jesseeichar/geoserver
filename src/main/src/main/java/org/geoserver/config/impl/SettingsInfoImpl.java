@@ -10,6 +10,7 @@ import java.util.Map;
 import org.geoserver.catalog.MetadataMap;
 import org.geoserver.catalog.WorkspaceInfo;
 import org.geoserver.config.ContactInfo;
+import org.geoserver.config.LayerGroupWorkspaceInclusion;
 import org.geoserver.config.SettingsInfo;
 
 public class SettingsInfoImpl implements SettingsInfo {
@@ -41,6 +42,8 @@ public class SettingsInfoImpl implements SettingsInfo {
     protected Map<Object, Object> clientProperties = new HashMap<Object, Object>();
 
     private boolean localWorkspaceIncludesPrefix = false;
+
+    private LayerGroupWorkspaceInclusion layerGroupInclusion = LayerGroupWorkspaceInclusion.AT_LEAST_ONE_CONTAINED;
 
     @Override
     public String getId() {
@@ -262,6 +265,16 @@ public class SettingsInfoImpl implements SettingsInfo {
     @Override
     public void setLocalWorkspaceIncludesPrefix(boolean removePrefix) {
         localWorkspaceIncludesPrefix = removePrefix;
+    }
+
+    @Override
+    public LayerGroupWorkspaceInclusion getLayerGroupInclusion() {
+        return layerGroupInclusion == null? LayerGroupWorkspaceInclusion.AT_LEAST_ONE_CONTAINED : layerGroupInclusion;
+    }
+
+    @Override
+    public void setLayerGroupInclusion(LayerGroupWorkspaceInclusion newInclusion) {
+        layerGroupInclusion  = newInclusion;
     }
 
 }

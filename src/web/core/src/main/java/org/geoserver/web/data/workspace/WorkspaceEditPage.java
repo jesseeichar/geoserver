@@ -6,6 +6,7 @@ package org.geoserver.web.data.workspace;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.logging.Logger;
 
@@ -23,6 +24,7 @@ import org.apache.wicket.markup.html.WebMarkupContainer;
 import org.apache.wicket.markup.html.basic.Label;
 import org.apache.wicket.markup.html.form.CheckBox;
 import org.apache.wicket.markup.html.form.DropDownChoice;
+import org.apache.wicket.markup.html.form.EnumChoiceRenderer;
 import org.apache.wicket.markup.html.form.Form;
 import org.apache.wicket.markup.html.form.FormComponentPanel;
 import org.apache.wicket.markup.html.form.SubmitLink;
@@ -46,6 +48,7 @@ import org.geoserver.catalog.WorkspaceInfo;
 import org.geoserver.config.ContactInfo;
 import org.geoserver.config.GeoServer;
 import org.geoserver.config.GeoServerInfo;
+import org.geoserver.config.LayerGroupWorkspaceInclusion;
 import org.geoserver.config.ServiceInfo;
 import org.geoserver.config.SettingsInfo;
 import org.geoserver.config.impl.ServiceInfoImpl;
@@ -324,6 +327,9 @@ public class WorkspaceEditPage extends GeoServerSecuredPage {
             otherSettingsPanel.add(new CheckBox("verboseExceptions"));
             otherSettingsPanel.add(new CheckBox("localWorkspaceIncludesPrefix"));
             otherSettingsPanel.add(new TextField<Integer>("numDecimals").add(new MinimumValidator<Integer>(0)));
+            otherSettingsPanel.add(new DropDownChoice("layerGroupInclusion",
+                    Arrays.<LayerGroupWorkspaceInclusion>asList(LayerGroupWorkspaceInclusion.values()),
+                    new EnumChoiceRenderer<LayerGroupWorkspaceInclusion>()));
             otherSettingsPanel.add(new DropDownChoice("charset", GlobalSettingsPage.AVAILABLE_CHARSETS));
             otherSettingsPanel.add(new TextField("proxyBaseUrl").add(new UrlValidator()));
             settingsContainer.add(otherSettingsPanel);

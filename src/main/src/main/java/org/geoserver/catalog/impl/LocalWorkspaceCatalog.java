@@ -6,26 +6,38 @@ package org.geoserver.catalog.impl;
 
 import java.io.Serializable;
 import java.lang.reflect.Method;
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
+
+import javax.annotation.Nullable;
 
 import org.geoserver.catalog.Catalog;
 import org.geoserver.catalog.CatalogInfo;
 import org.geoserver.catalog.LayerGroupInfo;
 import org.geoserver.catalog.LayerInfo;
 import org.geoserver.catalog.NamespaceInfo;
+import org.geoserver.catalog.PublishedInfo;
+import org.geoserver.catalog.ResourceInfo;
 import org.geoserver.catalog.StyleInfo;
 import org.geoserver.catalog.WorkspaceInfo;
 import org.geoserver.catalog.util.CloseableIterator;
 import org.geoserver.catalog.util.CloseableIteratorAdapter;
 import org.geoserver.config.GeoServer;
+import org.geoserver.config.LayerGroupWorkspaceInclusion;
+import org.geoserver.config.SettingsInfo;
 import org.geoserver.ows.LocalWorkspace;
 import org.geoserver.ows.LocalWorkspaceCatalogFilter;
 import org.geotools.feature.NameImpl;
 import org.opengis.feature.type.Name;
 import org.opengis.filter.Filter;
+import org.opengis.filter.FilterVisitor;
 import org.opengis.filter.sort.SortBy;
 
 import com.google.common.base.Function;
+import com.google.common.base.Predicate;
+import com.google.common.collect.Iterators;
+import com.google.common.collect.Lists;
 
 /**
  * Catalog decorator handling cases when a {@link LocalWorkspace} is set.
@@ -194,7 +206,46 @@ public class LocalWorkspaceCatalog extends AbstractCatalogDecorator implements C
 
     @Override
     public List<LayerGroupInfo> getLayerGroups() {
-        return wrap(super.getLayerGroups());
+        // Need to check the setting controlling which layer groups are included in the
+        // local workspace
+        //
+        // getLayerGroupInclusion() will check if a local workspace is set and will
+        // ensure all groups are returned if there is no local workspace
+        LayerGroupWorkspaceInclusion layerGroupInclusion = getLayerGroupInclusion();
+
+        if (layerGroupInclusion == LayerGroupWorkspaceInclusion.NONE) {
+            return Collections.emptyList();
+        }
+
+        List<LayerGroupInfo> layerGroups = super.getLayerGroups();
+        if (layerGroupInclusion == LayerGroupWorkspaceInclusion.ALL) {
+            return wrap(layerGroups);
+        } else {
+            boolean allContained = layerGroupInclusion == LayerGroupWorkspaceInclusion.ALL_CONTAINED;
+            ArrayList<LayerGroupInfo> filteredList = Lists.newArrayList(Iterators.filter(layerGroups.iterator(),
+                            new LayerGroupInclusionFilterPredicate(allContained)));
+            return wrap(filteredList);
+        }
+    }
+
+    /**
+     * Check the setting that controlls which LayerGroups are included.
+     *
+     * If there is no Geoserver it will use the default {@link LayerGroupWorkspaceInclusion#AT_LEAST_ONE_CONTAINED}
+     * value.
+     *
+     * If there is no localworkspace then naturally all groups will be returned.
+     *
+     * @see SettingsInfo#getLayerGroupInclusion()
+     */
+    private LayerGroupWorkspaceInclusion getLayerGroupInclusion() {
+        if (LocalWorkspace.get() == null) {
+            return LayerGroupWorkspaceInclusion.ALL;
+        } else if(this.geoServer == null) {
+            return LayerGroupWorkspaceInclusion.AT_LEAST_ONE_CONTAINED;
+        } else {
+            return this.geoServer.getSettings().getLayerGroupInclusion();
+        }
     }
 
     @Override
@@ -337,7 +388,30 @@ public class LocalWorkspaceCatalog extends AbstractCatalogDecorator implements C
     public <T extends CatalogInfo> CloseableIterator<T> list(final Class<T> of,
             final Filter filter, final Integer offset, final Integer count, final SortBy sortBy) {
 
-        CloseableIterator<T> iterator = delegate.list(of, filter, offset, count, sortBy);
+        CloseableIterator<T> iterator;
+
+        if (LayerGroupInfo.class.isAssignableFrom(of)) {
+            // Need to check the setting controlling which layer groups are included in the
+            // local workspace
+            //
+            // getLayerGroupInclusion() will check if a local workspace is set and will
+            // ensure all groups are returned if there is no local workspace
+            LayerGroupWorkspaceInclusion layerGroupInclusion = getLayerGroupInclusion();
+
+            if(layerGroupInclusion == LayerGroupWorkspaceInclusion.NONE) {
+                return CloseableIteratorAdapter.empty();
+            }
+
+            iterator = new ClearLocalWorkspaceThreadLocalIterator(delegate.list(of, filter, offset, count, sortBy));
+
+            if (layerGroupInclusion != LayerGroupWorkspaceInclusion.ALL) {
+                boolean allContained = layerGroupInclusion == LayerGroupWorkspaceInclusion.ALL_CONTAINED;
+                iterator = CloseableIteratorAdapter.filter(iterator, new LayerGroupInclusionFilterPredicate(allContained));
+            }
+        } else {
+            iterator = delegate.list(of, filter, offset, count, sortBy);
+        }
+
         Function<T, T> wrappingFunction = new Function<T, T>() {
 
             final Class<T> type = of;
@@ -347,10 +421,163 @@ public class LocalWorkspaceCatalog extends AbstractCatalogDecorator implements C
                 return wrap(catalogObject, type);
             }
         };
+
         return CloseableIteratorAdapter.transform(iterator, wrappingFunction);
     }
 
     public void removeListeners(Class listenerClass) {
         delegate.removeListeners(listenerClass);
+    }
+
+    /**
+     * A predicate used for filtering out LayerGroups that are not allowed as
+     * configured by the {@link SettingsInfo#getLayerGroupInclusion()}
+     *
+     * This filter only applies to the two cases:
+     * <ul>
+     *          <li>{@link LayerGroupWorkspaceInclusion#ALL_CONTAINED}</li>
+     *          <li>{@link LayerGroupWorkspaceInclusion#AT_LEAST_ONE_CONTAINED}</li>
+     * </ul>
+     *
+     * The other two options are trivial and more efficiently implemented without filtering
+     * the collection.
+     *
+     * @author Jesse Eichar
+     */
+    private static class LayerGroupInclusionFilterPredicate implements Predicate<LayerGroupInfo>, Filter {
+        private boolean allContained;
+
+        /**
+         * Constructor.
+         *
+         * @param allContained 
+         *      If true then all the layers contained in the layer group MUST
+         *      be contained within the current workspace.  Otherwise only one 
+         *      of the layers has to be contained in the current workspace.
+         */
+        public LayerGroupInclusionFilterPredicate(boolean allContained) {
+            this.allContained = allContained;
+        }
+
+        @Override
+        public boolean apply(@Nullable LayerGroupInfo input) {
+            if (input == null || input.getLayers() == null) {
+                return false;
+            } else {
+                WorkspaceInfo localWorkspace = LocalWorkspace.get();
+                List<PublishedInfo> layers = input.getLayers();
+
+                for (PublishedInfo info : layers) {
+                    if (info == null) {
+                        continue;
+                    }
+                    boolean contained;
+                    if (info instanceof LayerGroupInfo) {
+                        LayerGroupInfo layerGroup = (LayerGroupInfo) info;
+
+                        // If the layer group is in the current workspace then we know all
+                        // contained layers are also in localWorkspace. 
+                        contained = localWorkspace.equals(layerGroup.getWorkspace());
+                        if (!contained) {
+                            // we can't shortcut so we need to investigate each sublayer
+                            contained = apply(layerGroup);
+                        }
+                    } else {
+                        LayerInfo layer = (LayerInfo) info;
+                        ResourceInfo resource = layer.getResource();
+                        String prefix = resource.getNamespace().getPrefix();
+                        contained = localWorkspace.getName().equals(prefix);
+                    }
+
+                    // We do short-circuit checks here to
+                    // see if we can bail out of the processing
+                    if (contained && !allContained) {
+                        return true;
+                    } else if (!contained && allContained) {
+                        return false;
+                    }
+                }
+
+                return allContained;
+            }
+        }
+
+        @Override
+        public boolean evaluate(Object object) {
+            return apply((LayerGroupInfo) object);
+        }
+
+        @Override
+        public Object accept(FilterVisitor visitor, Object extraData) {
+            return extraData;
+        }
+    }
+    
+    /**
+     * Clear the {@link LocalWorkspace} thread local before calling the corresponding method on
+     * the delegate iterator.
+     * 
+     * This is used in the list method when listing LayerGroups.  The reason for this is that
+     * when listing layergroups we want all layers listed then filtering afterwords.  This removes
+     * the {@link LocalWorkspaceCatalogFilter} (in effect) so that all layers are listed then filtered
+     * in this method.
+     * 
+     * @author Jesse
+     *
+     * @param <T> contained type of iterator
+     */
+    private static final class ClearLocalWorkspaceThreadLocalIterator<T> implements CloseableIterator<T> {
+
+        private CloseableIterator<T> delegate;
+
+        public ClearLocalWorkspaceThreadLocalIterator(CloseableIterator<T> delegate) {
+            this.delegate = delegate;
+        }
+
+        @Override
+        public boolean hasNext() {
+            WorkspaceInfo oldVal = LocalWorkspace.get();
+            try {
+                LocalWorkspace.remove();
+                return delegate.hasNext();
+            } finally {
+                LocalWorkspace.set(oldVal);
+            }
+        }
+
+        @Override
+        public T next() {
+            WorkspaceInfo oldVal = LocalWorkspace.get();
+            try {
+                LocalWorkspace.remove();
+                return delegate.next();
+            } finally {
+                LocalWorkspace.set(oldVal);
+            }
+        }
+
+        @Override
+        public void remove() {
+            WorkspaceInfo oldVal = LocalWorkspace.get();
+            try {
+                LocalWorkspace.remove();
+                delegate.remove();
+            } finally {
+                LocalWorkspace.set(oldVal);
+            }
+        }
+
+        @Override
+        public void close() {
+            WorkspaceInfo oldVal = LocalWorkspace.get();
+            try {
+                LocalWorkspace.remove();
+                delegate.close();
+            } finally {
+                LocalWorkspace.set(oldVal);
+            }
+
+        }
+        
     }
 }
