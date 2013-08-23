@@ -225,8 +225,9 @@ public class X3DBuilder {
 		newLayer(layer.getLayerInfo(), layer.getStyles());
 		FeatureCollection<?, ?> collection = layer.getFeatures();
 		title.append(layer.getLayerInfo().getRequestName());
+		FeatureIterator<?> iterator = null;
 		try {
-			FeatureIterator<?> iterator = collection.features();
+		        iterator = collection.features();
 			SimpleFeature feature;
 			SimpleFeatureType fType;
 			List<AttributeDescriptor> types;
@@ -253,12 +254,15 @@ public class X3DBuilder {
 					}
 				}
 			}
-			iterator.close();
 		} catch (Exception exception) {
 			ServiceException serviceException = new ServiceException("Error: "
 					+ exception.getMessage());
 			serviceException.initCause(exception);
 			throw serviceException;
+		} finally {
+		    if (iterator != null) {
+		        iterator.close();
+		    }
 		}
 	}
 
@@ -325,7 +329,8 @@ public class X3DBuilder {
 			if (geometryType == GeometryType.POLYGON.getCode()) {
 				this.activePolygons.addPolygon(((Polygon) geometry));
 				// geometries++;
-			} else if (geometryType == GeometryType.MULTIPOLYGON.getCode()) {
+			} else if (geometryType == GeometryType.MULTIPOLYGON.getCode() || geometryType == GeometryType.MULTILINESTRING.getCode()
+			        || geometryType == GeometryType.MULTIPOINT.getCode()) {
 				for (int i = 0, n = geometry.getNumGeometries(); i < n; i++) {
 					addGeometry(geometry.getGeometryN(i), feature);
 				}

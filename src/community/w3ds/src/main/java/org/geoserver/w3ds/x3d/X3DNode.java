@@ -131,7 +131,7 @@ public class X3DNode {
 			return this.text;
 		}
 		StringBuilder strb = new StringBuilder();
-		strb.append("<" + tag);
+		strb.append("<" + tag.toLowerCase());
 		for (X3DAttribute a : attributes) {
 			strb.append(" " + a.toString());
 		}
@@ -145,7 +145,7 @@ public class X3DNode {
 			for (X3DNode n : nodes) {
 				strb.append(n.toString());
 			}
-			strb.append("</" + tag + ">");
+			strb.append("</" + tag.toLowerCase() + ">");
 		}
 		return strb.toString();
 	}

@@ -11,6 +11,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Map;
 
 import org.geoserver.catalog.Catalog;
 import org.geoserver.catalog.FeatureTypeInfo;
@@ -61,15 +62,17 @@ public class GetScene {
 
 	public void run() throws IOException {
 		Iterator<W3DSLayerInfo> layersIterator = request.getLayers().iterator();
+		int layerIndex = 0;
 		while(layersIterator.hasNext()) {
 			W3DSLayerInfo layerInfo = layersIterator.next();
 			FeatureTypeInfo feature = catalog.getFeatureTypeByName(layerInfo.getLayerInfo().getResource().getName());
-			Query query = createQuery((SimpleFeatureSource)feature.getFeatureSource(null, null));
+			Query query = createQuery((SimpleFeatureSource)feature.getFeatureSource(null, null), layerIndex);
 			scene.add(layerInfo, feature.getFeatureSource(null, null).getFeatures(query), catalog);
+			layerIndex++;
 		}
 	}
 
-	public Query createQuery(SimpleFeatureSource source) {
+	public Query createQuery(SimpleFeatureSource source, int layerIndex) {
 		FilterFactory filterFactory = (FilterFactory) CommonFactoryFinder
 				.getFilterFactory(null);
 		Filter filter = Filter.INCLUDE;
@@ -98,6 +101,10 @@ public class GetScene {
 				new LiteCoordinateSequenceFactory());
 		hints.put(Query.INCLUDE_MANDATORY_PROPS, true);
 		hints.put(Hints.FEATURE_2D, Boolean.FALSE);
+		List<Map<String, String>> viewParams = request.getViewParams();
+                if (viewParams != null & !viewParams.isEmpty()) {
+		    hints.put(Hints.VIRTUAL_TABLE_PARAMETERS, viewParams.get(layerIndex));
+		}
 		query.setHints(hints);
 		return query;
 	}

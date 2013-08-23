@@ -32,6 +32,7 @@ public class GetSceneRequest extends W3DSRequest {
 	
 	// Hacking to have KML (provisory)
 	private GeoServer geoServer;
+    private List<Map<String, String>> viewParams;
 	
 	public GeoServer getGeoServer() {
 		return geoServer;
@@ -121,5 +122,13 @@ public class GetSceneRequest extends W3DSRequest {
 		this.format = format;
 		this.layers = layers;
 	}
+
+    public void setViewParams(List<Map<String, String>> viewParams) {
+        this.viewParams = viewParams;
+    }
+    
+    public List<Map<String, String>> getViewParams() {
+        return viewParams;
+    }
 
 }

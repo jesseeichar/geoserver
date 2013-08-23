@@ -8,6 +8,7 @@
 package org.geoserver.w3ds.kvp;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
@@ -20,6 +21,7 @@ import org.geoserver.w3ds.types.GetSceneRequest;
 import org.geoserver.w3ds.types.W3DSLayerInfo;
 import org.geoserver.w3ds.utilities.Format;
 import org.geoserver.w3ds.utilities.Operation;
+import org.geotools.util.Converters;
 import org.opengis.geometry.Envelope;
 import org.opengis.referencing.crs.CoordinateReferenceSystem;
 import org.xml.sax.SAXException;
@@ -38,7 +40,8 @@ public class GetSceneKvpRequestReader extends KvpRequestReader {
 		this.geoServer = geoServer;
 	}
 
-	public GetSceneRequest read(Object request, Map kvp, Map rawKvp) throws Exception {
+	@SuppressWarnings("unchecked")
+    public GetSceneRequest read(Object request, Map kvp, Map rawKvp) throws Exception {
 		GetSceneRequest gsr = (GetSceneRequest) super.read(request, kvp, rawKvp);
 		String aux = (String) rawKvp.get("SERVICE");
 		if (aux == null) {
@@ -99,11 +102,15 @@ public class GetSceneKvpRequestReader extends KvpRequestReader {
 		else {
 			KVPUtils.setDefaultStyles(layers, catalog);
 		}
+		
+
 		// TODO: Handle the baseURL parameter.
 		String baseUrl = "geoserver/w3ds?";
 		aux = (String) rawKvp.get("OFFSET");
 		Coordinate offset = KVPUtils.parseOffset(aux, bbox);
 		gsr.setMandatoryParameters(service, requestStr, version, baseUrl, rawKvp, crs, bbox, format, layers);
+		Object viewparams = kvp.get("VIEWPARAMS");
+		gsr.setViewParams((List<Map<String, String>>)viewparams);
 		gsr.setOffset(offset);
 		// Hacking to use WMS to generate KML(provisory)
 		gsr.setGeoServer(geoServer);
