@@ -1,0 +1,15 @@
+<layer>
+  <name>tbl_3d_horizons_polysep</name>
+  <id>LayerInfoImpl-3260c911:14082302130:-4a05</id>
+  <type>VECTOR</type>
+  <defaultStyle>
+    <id>StyleInfoImpl--570ae188:124761b8d78:-7fe0</id>
+  </defaultStyle>
+  <resource class="featureType">
+    <id>FeatureTypeInfoImpl-3260c911:14082302130:-4a06</id>
+  </resource>
+  <attribution>
+    <logoWidth>0</logoWidth>
+    <logoHeight>0</logoHeight>
+  </attribution>
+</layer>

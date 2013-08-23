@@ -1,0 +1,31 @@
+<dataStore>
+  <id>DataStoreInfoImpl--3bc2b7f4:14087e75f8a:-20a1</id>
+  <name>brandenburg_public</name>
+  <type>PostGIS</type>
+  <enabled>true</enabled>
+  <workspace>
+    <id>WorkspaceInfoImpl--3bc2b7f4:14087e75f8a:-20a3</id>
+  </workspace>
+  <connectionParameters>
+    <entry key="Connection timeout">20</entry>
+    <entry key="port">5432</entry>
+    <entry key="passwd">crypt1:m+xsA3Pmp/qPz/clekjGE9PKmgnX1w2h</entry>
+    <entry key="dbtype">postgis</entry>
+    <entry key="host">localhost</entry>
+    <entry key="validate connections">true</entry>
+    <entry key="encode functions">false</entry>
+    <entry key="max connections">10</entry>
+    <entry key="database">brandenburg</entry>
+    <entry key="namespace">b3d.intranet.terrestris.de</entry>
+    <entry key="schema">public</entry>
+    <entry key="Loose bbox">true</entry>
+    <entry key="Expose primary keys">false</entry>
+    <entry key="fetch size">1000</entry>
+    <entry key="Max open prepared statements">50</entry>
+    <entry key="preparedStatements">false</entry>
+    <entry key="Estimated extends">true</entry>
+    <entry key="user">pgadmin</entry>
+    <entry key="min connections">1</entry>
+  </connectionParameters>
+  <__default>false</__default>
+</dataStore>

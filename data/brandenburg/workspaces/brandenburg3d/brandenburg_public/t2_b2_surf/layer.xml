@@ -1,0 +1,20 @@
+<layer>
+  <name>t2_b2_surf</name>
+  <id>LayerInfoImpl--41cb1ca6:1409fb7eaad:-7ff4</id>
+  <type>VECTOR</type>
+  <defaultStyle>
+    <id>StyleInfoImpl--41cb1ca6:1409fb7eaad:-7ff1</id>
+  </defaultStyle>
+  <styles class="linked-hash-set">
+    <style>
+      <id>StyleInfoImpl--41cb1ca6:1409fb7eaad:-7ff1</id>
+    </style>
+  </styles>
+  <resource class="featureType">
+    <id>FeatureTypeInfoImpl--41cb1ca6:1409fb7eaad:-7ff5</id>
+  </resource>
+  <attribution>
+    <logoWidth>0</logoWidth>
+    <logoHeight>0</logoHeight>
+  </attribution>
+</layer>

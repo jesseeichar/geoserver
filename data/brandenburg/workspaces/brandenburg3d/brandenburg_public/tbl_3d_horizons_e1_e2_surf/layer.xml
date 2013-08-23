@@ -1,0 +1,15 @@
+<layer>
+  <name>tbl_3d_horizons_e1_e2_surf</name>
+  <id>LayerInfoImpl--3bc2b7f4:14087e75f8a:-19a3</id>
+  <type>VECTOR</type>
+  <defaultStyle>
+    <id>StyleInfoImpl--570ae188:124761b8d78:-7fdf</id>
+  </defaultStyle>
+  <resource class="featureType">
+    <id>FeatureTypeInfoImpl--3bc2b7f4:14087e75f8a:-19a4</id>
+  </resource>
+  <attribution>
+    <logoWidth>0</logoWidth>
+    <logoHeight>0</logoHeight>
+  </attribution>
+</layer>

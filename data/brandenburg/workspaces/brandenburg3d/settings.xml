@@ -1,0 +1,24 @@
+<settings>
+  <id>SettingsInfoImpl--41cb1ca6:1409fb7eaad:-7fe4</id>
+  <workspace>
+    <id>WorkspaceInfoImpl--3bc2b7f4:14087e75f8a:-20a3</id>
+    <name>brandenburg3d</name>
+  </workspace>
+  <contact>
+    <id>contact</id>
+    <addressCity>Alexandria</addressCity>
+    <addressCountry>Egypt</addressCountry>
+    <addressType>Work</addressType>
+    <contactEmail>claudius.ptolomaeus@gmail.com</contactEmail>
+    <contactOrganization>The ancient geographes INC</contactOrganization>
+    <contactPerson>Claudius Ptolomaeus</contactPerson>
+    <contactPosition>Chief geographer</contactPosition>
+  </contact>
+  <charset>UTF-8</charset>
+  <numDecimals>8</numDecimals>
+  <onlineResource>http://geoserver.org</onlineResource>
+  <proxyBaseUrl>http://b3d.intranet.terrestris.de/geoserver</proxyBaseUrl>
+  <verbose>false</verbose>
+  <verboseExceptions>false</verboseExceptions>
+  <localWorkspaceIncludesPrefix>false</localWorkspaceIncludesPrefix>
+</settings>

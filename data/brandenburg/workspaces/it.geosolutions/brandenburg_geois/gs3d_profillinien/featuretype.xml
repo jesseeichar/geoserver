@@ -1,0 +1,72 @@
+<featureType>
+  <id>FeatureTypeInfoImpl--2f827798:14057b37982:-7ffb</id>
+  <name>gs3d_profillinien</name>
+  <nativeName>gs3d_profillinien</nativeName>
+  <namespace>
+    <id>NamespaceInfoImpl--570ae188:124761b8d78:-7ffc</id>
+  </namespace>
+  <title>gs3d_profillinien</title>
+  <keywords>
+    <string>features</string>
+    <string>gs3d_profillinien</string>
+  </keywords>
+  <nativeCRS class="projected">PROJCS[&quot;ETRS89 / UTM zone 33N&quot;, 
+  GEOGCS[&quot;ETRS89&quot;, 
+    DATUM[&quot;European Terrestrial Reference System 1989&quot;, 
+      SPHEROID[&quot;GRS 1980&quot;, 6378137.0, 298.257222101, AUTHORITY[&quot;EPSG&quot;,&quot;7019&quot;]], 
+      TOWGS84[0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0], 
+      AUTHORITY[&quot;EPSG&quot;,&quot;6258&quot;]], 
+    PRIMEM[&quot;Greenwich&quot;, 0.0, AUTHORITY[&quot;EPSG&quot;,&quot;8901&quot;]], 
+    UNIT[&quot;degree&quot;, 0.017453292519943295], 
+    AXIS[&quot;Geodetic longitude&quot;, EAST], 
+    AXIS[&quot;Geodetic latitude&quot;, NORTH], 
+    AUTHORITY[&quot;EPSG&quot;,&quot;4258&quot;]], 
+  PROJECTION[&quot;Transverse_Mercator&quot;, AUTHORITY[&quot;EPSG&quot;,&quot;9807&quot;]], 
+  PARAMETER[&quot;central_meridian&quot;, 15.0], 
+  PARAMETER[&quot;latitude_of_origin&quot;, 0.0], 
+  PARAMETER[&quot;scale_factor&quot;, 0.9996], 
+  PARAMETER[&quot;false_easting&quot;, 500000.0], 
+  PARAMETER[&quot;false_northing&quot;, 0.0], 
+  UNIT[&quot;m&quot;, 1.0], 
+  AXIS[&quot;Easting&quot;, EAST], 
+  AXIS[&quot;Northing&quot;, NORTH], 
+  AUTHORITY[&quot;EPSG&quot;,&quot;25833&quot;]]</nativeCRS>
+  <srs>EPSG:25833</srs>
+  <nativeBoundingBox>
+    <minx>416859.6875</minx>
+    <maxx>432233.59375</maxx>
+    <miny>5764341.5</miny>
+    <maxy>5776872.5</maxy>
+    <crs class="projected">EPSG:25833</crs>
+  </nativeBoundingBox>
+  <latLonBoundingBox>
+    <minx>13.785224515001007</minx>
+    <maxx>14.012304383329187</maxx>
+    <miny>52.023468535759555</miny>
+    <maxy>52.138207059875505</maxy>
+    <crs>GEOGCS[&quot;WGS84(DD)&quot;, 
+  DATUM[&quot;WGS84&quot;, 
+    SPHEROID[&quot;WGS84&quot;, 6378137.0, 298.257223563]], 
+  PRIMEM[&quot;Greenwich&quot;, 0.0], 
+  UNIT[&quot;degree&quot;, 0.017453292519943295], 
+  AXIS[&quot;Geodetic longitude&quot;, EAST], 
+  AXIS[&quot;Geodetic latitude&quot;, NORTH]]</crs>
+  </latLonBoundingBox>
+  <projectionPolicy>FORCE_DECLARED</projectionPolicy>
+  <enabled>true</enabled>
+  <metadata>
+    <entry key="x3d.defaultStyle">line</entry>
+    <entry key="x3d.styles">[]</entry>
+    <entry key="x3d.queryable">true</entry>
+    <entry key="x3d.hLOD">false</entry>
+    <entry key="x3d.objectclass">[fs_dt_profilspuren_profile, horizonte_text]</entry>
+    <entry key="x3d.activate">true</entry>
+    <entry key="x3d.tiled">false</entry>
+    <entry key="x3d.objectid">stoerung_namelokal</entry>
+  </metadata>
+  <store class="dataStore">
+    <id>DataStoreInfoImpl--2f827798:14057b37982:-7fff</id>
+  </store>
+  <maxFeatures>0</maxFeatures>
+  <numDecimals>0</numDecimals>
+</featureType>

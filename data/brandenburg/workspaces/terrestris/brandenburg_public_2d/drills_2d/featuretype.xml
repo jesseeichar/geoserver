@@ -1,0 +1,62 @@
+<featureType>
+  <id>FeatureTypeInfoImpl--2e3c9ec6:1405ddd86cd:-8000</id>
+  <name>drills_2d</name>
+  <nativeName>tbl_2d_bohrungen</nativeName>
+  <namespace>
+    <id>NamespaceInfoImpl-50953b6f:1405dcc70d0:-7fff</id>
+  </namespace>
+  <title>drills_2d</title>
+  <keywords>
+    <string>features</string>
+    <string>tbl_2d_bohrungen</string>
+  </keywords>
+  <nativeCRS class="projected">PROJCS[&quot;ETRS89 / UTM zone 33N&quot;, 
+  GEOGCS[&quot;ETRS89&quot;, 
+    DATUM[&quot;European Terrestrial Reference System 1989&quot;, 
+      SPHEROID[&quot;GRS 1980&quot;, 6378137.0, 298.257222101, AUTHORITY[&quot;EPSG&quot;,&quot;7019&quot;]], 
+      TOWGS84[0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0], 
+      AUTHORITY[&quot;EPSG&quot;,&quot;6258&quot;]], 
+    PRIMEM[&quot;Greenwich&quot;, 0.0, AUTHORITY[&quot;EPSG&quot;,&quot;8901&quot;]], 
+    UNIT[&quot;degree&quot;, 0.017453292519943295], 
+    AXIS[&quot;Geodetic longitude&quot;, EAST], 
+    AXIS[&quot;Geodetic latitude&quot;, NORTH], 
+    AUTHORITY[&quot;EPSG&quot;,&quot;4258&quot;]], 
+  PROJECTION[&quot;Transverse_Mercator&quot;, AUTHORITY[&quot;EPSG&quot;,&quot;9807&quot;]], 
+  PARAMETER[&quot;central_meridian&quot;, 15.0], 
+  PARAMETER[&quot;latitude_of_origin&quot;, 0.0], 
+  PARAMETER[&quot;scale_factor&quot;, 0.9996], 
+  PARAMETER[&quot;false_easting&quot;, 500000.0], 
+  PARAMETER[&quot;false_northing&quot;, 0.0], 
+  UNIT[&quot;m&quot;, 1.0], 
+  AXIS[&quot;Easting&quot;, EAST], 
+  AXIS[&quot;Northing&quot;, NORTH], 
+  AUTHORITY[&quot;EPSG&quot;,&quot;25833&quot;]]</nativeCRS>
+  <srs>EPSG:25833</srs>
+  <nativeBoundingBox>
+    <minx>269902.0</minx>
+    <maxx>437205.0</maxx>
+    <miny>5876522.0</miny>
+    <maxy>5885150.0</maxy>
+    <crs class="projected">EPSG:25833</crs>
+  </nativeBoundingBox>
+  <latLonBoundingBox>
+    <minx>11.56552425393521</minx>
+    <maxx>14.06354377143113</maxx>
+    <miny>52.988777776597246</miny>
+    <maxy>53.11208167577018</maxy>
+    <crs>GEOGCS[&quot;WGS84(DD)&quot;, 
+  DATUM[&quot;WGS84&quot;, 
+    SPHEROID[&quot;WGS84&quot;, 6378137.0, 298.257223563]], 
+  PRIMEM[&quot;Greenwich&quot;, 0.0], 
+  UNIT[&quot;degree&quot;, 0.017453292519943295], 
+  AXIS[&quot;Geodetic longitude&quot;, EAST], 
+  AXIS[&quot;Geodetic latitude&quot;, NORTH]]</crs>
+  </latLonBoundingBox>
+  <projectionPolicy>FORCE_DECLARED</projectionPolicy>
+  <enabled>true</enabled>
+  <store class="dataStore">
+    <id>DataStoreInfoImpl-50953b6f:1405dcc70d0:-7ffe</id>
+  </store>
+  <maxFeatures>0</maxFeatures>
+  <numDecimals>0</numDecimals>
+</featureType>

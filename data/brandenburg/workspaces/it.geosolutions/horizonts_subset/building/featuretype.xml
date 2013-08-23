@@ -1,0 +1,61 @@
+<featureType>
+  <id>FeatureTypeInfoImpl-1bcc138:14078fce8b6:-7ffe</id>
+  <name>building</name>
+  <nativeName>building</nativeName>
+  <namespace>
+    <id>NamespaceInfoImpl--570ae188:124761b8d78:-7ffc</id>
+  </namespace>
+  <title>building</title>
+  <keywords>
+    <string>building</string>
+    <string>features</string>
+  </keywords>
+  <srs>EPSG:25833</srs>
+  <nativeBoundingBox>
+    <minx>2569766.25</minx>
+    <maxx>2572236.25</maxx>
+    <miny>5655772.5</miny>
+    <maxy>5658271.0</maxy>
+  </nativeBoundingBox>
+  <latLonBoundingBox>
+    <minx>42.66759464166789</minx>
+    <maxx>42.70799821688333</maxx>
+    <miny>47.5975307951472</miny>
+    <maxy>47.625058952232756</maxy>
+    <crs>GEOGCS[&quot;WGS84(DD)&quot;, 
+  DATUM[&quot;WGS84&quot;, 
+    SPHEROID[&quot;WGS84&quot;, 6378137.0, 298.257223563]], 
+  PRIMEM[&quot;Greenwich&quot;, 0.0], 
+  UNIT[&quot;degree&quot;, 0.017453292519943295], 
+  AXIS[&quot;Geodetic longitude&quot;, EAST], 
+  AXIS[&quot;Geodetic latitude&quot;, NORTH]]</crs>
+  </latLonBoundingBox>
+  <projectionPolicy>FORCE_DECLARED</projectionPolicy>
+  <enabled>true</enabled>
+  <metadata>
+    <entry key="x3d.defaultStyle">green</entry>
+    <entry key="time">
+      <dimensionInfo>
+        <enabled>false</enabled>
+      </dimensionInfo>
+    </entry>
+    <entry key="x3d.styles">[]</entry>
+    <entry key="x3d.queryable">true</entry>
+    <entry key="x3d.hLOD">false</entry>
+    <entry key="x3d.objectclass">[]</entry>
+    <entry key="cachingEnabled">false</entry>
+    <entry key="elevation">
+      <dimensionInfo>
+        <enabled>false</enabled>
+      </dimensionInfo>
+    </entry>
+    <entry key="x3d.activate">true</entry>
+    <entry key="x3d.tiled">false</entry>
+    <entry key="x3d.objectid">function</entry>
+  </metadata>
+  <store class="dataStore">
+    <id>DataStoreInfoImpl-1bcc138:14078fce8b6:-8000</id>
+  </store>
+  <maxFeatures>0</maxFeatures>
+  <numDecimals>0</numDecimals>
+</featureType>

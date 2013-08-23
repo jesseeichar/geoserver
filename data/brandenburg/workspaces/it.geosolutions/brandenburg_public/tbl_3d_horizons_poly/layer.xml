@@ -1,0 +1,15 @@
+<layer>
+  <name>tbl_3d_horizons_poly</name>
+  <id>LayerInfoImpl--1911ecbf:1408113a19c:-7a7a</id>
+  <type>VECTOR</type>
+  <defaultStyle>
+    <id>StyleInfoImpl--570ae188:124761b8d78:-7fe0</id>
+  </defaultStyle>
+  <resource class="featureType">
+    <id>FeatureTypeInfoImpl--1911ecbf:1408113a19c:-7a7b</id>
+  </resource>
+  <attribution>
+    <logoWidth>0</logoWidth>
+    <logoHeight>0</logoHeight>
+  </attribution>
+</layer>

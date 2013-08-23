@@ -1,0 +1,61 @@
+<featureType>
+  <id>FeatureTypeInfoImpl--1911ecbf:1408113a19c:-7a7b</id>
+  <name>tbl_3d_horizons_poly</name>
+  <nativeName>tbl_3d_horizons_poly</nativeName>
+  <namespace>
+    <id>NamespaceInfoImpl--570ae188:124761b8d78:-7ffc</id>
+  </namespace>
+  <title>tbl_3d_horizons_poly</title>
+  <keywords>
+    <string>tbl_3d_horizons_poly</string>
+    <string>features</string>
+  </keywords>
+  <srs>EPSG:25833</srs>
+  <nativeBoundingBox>
+    <minx>249255.3125</minx>
+    <maxx>353755.3125</maxx>
+    <miny>5792003.0625</miny>
+    <maxy>5926253.0625</maxy>
+  </nativeBoundingBox>
+  <latLonBoundingBox>
+    <minx>11.225694819187314</minx>
+    <maxx>12.857212747915552</maxx>
+    <miny>52.22127856612895</miny>
+    <maxy>53.464941627145265</maxy>
+    <crs>GEOGCS[&quot;WGS84(DD)&quot;, 
+  DATUM[&quot;WGS84&quot;, 
+    SPHEROID[&quot;WGS84&quot;, 6378137.0, 298.257223563]], 
+  PRIMEM[&quot;Greenwich&quot;, 0.0], 
+  UNIT[&quot;degree&quot;, 0.017453292519943295], 
+  AXIS[&quot;Geodetic longitude&quot;, EAST], 
+  AXIS[&quot;Geodetic latitude&quot;, NORTH]]</crs>
+  </latLonBoundingBox>
+  <projectionPolicy>FORCE_DECLARED</projectionPolicy>
+  <enabled>true</enabled>
+  <metadata>
+    <entry key="x3d.defaultStyle">polygon</entry>
+    <entry key="time">
+      <dimensionInfo>
+        <enabled>false</enabled>
+      </dimensionInfo>
+    </entry>
+    <entry key="x3d.styles">[]</entry>
+    <entry key="x3d.queryable">true</entry>
+    <entry key="x3d.hLOD">false</entry>
+    <entry key="x3d.objectclass">[]</entry>
+    <entry key="elevation">
+      <dimensionInfo>
+        <enabled>false</enabled>
+      </dimensionInfo>
+    </entry>
+    <entry key="cachingEnabled">false</entry>
+    <entry key="x3d.activate">true</entry>
+    <entry key="x3d.tiled">false</entry>
+    <entry key="x3d.objectid">name</entry>
+  </metadata>
+  <store class="dataStore">
+    <id>DataStoreInfoImpl--2f827798:14057b37982:-7ffe</id>
+  </store>
+  <maxFeatures>0</maxFeatures>
+  <numDecimals>0</numDecimals>
+</featureType>

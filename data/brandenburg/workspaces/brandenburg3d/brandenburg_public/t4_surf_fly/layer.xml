@@ -1,0 +1,15 @@
+<layer>
+  <name>t4_surf_fly</name>
+  <id>LayerInfoImpl-1f9378c1:140966054c3:6651</id>
+  <type>VECTOR</type>
+  <defaultStyle>
+    <id>StyleInfoImpl--570ae188:124761b8d78:-7fe0</id>
+  </defaultStyle>
+  <resource class="featureType">
+    <id>FeatureTypeInfoImpl-1f9378c1:140966054c3:6650</id>
+  </resource>
+  <attribution>
+    <logoWidth>0</logoWidth>
+    <logoHeight>0</logoHeight>
+  </attribution>
+</layer>

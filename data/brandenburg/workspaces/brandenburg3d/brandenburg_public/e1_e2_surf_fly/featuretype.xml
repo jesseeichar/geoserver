@@ -1,0 +1,88 @@
+<featureType>
+  <id>FeatureTypeInfoImpl-1f9378c1:140966054c3:6657</id>
+  <name>e1_e2_surf_fly</name>
+  <nativeName>e1_e2_surf_fly</nativeName>
+  <namespace>
+    <id>NamespaceInfoImpl--3bc2b7f4:14087e75f8a:-20a2</id>
+  </namespace>
+  <title>e1_e2_surf_fly</title>
+  <keywords>
+    <string>features</string>
+    <string>e1_e2_surf_fly</string>
+  </keywords>
+  <nativeCRS class="projected">PROJCS[&quot;ETRS89 / UTM zone 33N&quot;, 
+  GEOGCS[&quot;ETRS89&quot;, 
+    DATUM[&quot;European Terrestrial Reference System 1989&quot;, 
+      SPHEROID[&quot;GRS 1980&quot;, 6378137.0, 298.257222101, AUTHORITY[&quot;EPSG&quot;,&quot;7019&quot;]], 
+      TOWGS84[0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0], 
+      AUTHORITY[&quot;EPSG&quot;,&quot;6258&quot;]], 
+    PRIMEM[&quot;Greenwich&quot;, 0.0, AUTHORITY[&quot;EPSG&quot;,&quot;8901&quot;]], 
+    UNIT[&quot;degree&quot;, 0.017453292519943295], 
+    AXIS[&quot;Geodetic longitude&quot;, EAST], 
+    AXIS[&quot;Geodetic latitude&quot;, NORTH], 
+    AUTHORITY[&quot;EPSG&quot;,&quot;4258&quot;]], 
+  PROJECTION[&quot;Transverse_Mercator&quot;, AUTHORITY[&quot;EPSG&quot;,&quot;9807&quot;]], 
+  PARAMETER[&quot;central_meridian&quot;, 15.0], 
+  PARAMETER[&quot;latitude_of_origin&quot;, 0.0], 
+  PARAMETER[&quot;scale_factor&quot;, 0.9996], 
+  PARAMETER[&quot;false_easting&quot;, 500000.0], 
+  PARAMETER[&quot;false_northing&quot;, 0.0], 
+  UNIT[&quot;m&quot;, 1.0], 
+  AXIS[&quot;Easting&quot;, EAST], 
+  AXIS[&quot;Northing&quot;, NORTH], 
+  AUTHORITY[&quot;EPSG&quot;,&quot;25833&quot;]]</nativeCRS>
+  <srs>EPSG:25833</srs>
+  <nativeBoundingBox>
+    <minx>249255.0</minx>
+    <maxx>353755.0</maxx>
+    <miny>5792003.0</miny>
+    <maxy>5926253.0</maxy>
+  </nativeBoundingBox>
+  <latLonBoundingBox>
+    <minx>11.225690176234824</minx>
+    <maxx>12.857208199690346</maxx>
+    <miny>52.221277863179154</miny>
+    <maxy>53.46494097900391</maxy>
+    <crs>GEOGCS[&quot;WGS84(DD)&quot;, 
+  DATUM[&quot;WGS84&quot;, 
+    SPHEROID[&quot;WGS84&quot;, 6378137.0, 298.257223563]], 
+  PRIMEM[&quot;Greenwich&quot;, 0.0], 
+  UNIT[&quot;degree&quot;, 0.017453292519943295], 
+  AXIS[&quot;Geodetic longitude&quot;, EAST], 
+  AXIS[&quot;Geodetic latitude&quot;, NORTH]]</crs>
+  </latLonBoundingBox>
+  <projectionPolicy>FORCE_DECLARED</projectionPolicy>
+  <enabled>true</enabled>
+  <metadata>
+    <entry key="x3d.defaultStyle">polygon</entry>
+    <entry key="x3d.styles">[]</entry>
+    <entry key="x3d.queryable">true</entry>
+    <entry key="x3d.hLOD">false</entry>
+    <entry key="x3d.objectclass">[]</entry>
+    <entry key="x3d.activate">true</entry>
+    <entry key="x3d.tiled">false</entry>
+    <entry key="JDBC_VIRTUAL_TABLE">
+      <virtualTable>
+        <name>e1_e2_surf_fly</name>
+        <sql>SELECT name, id, ST_COLLECT(geom) as geom FROM tbl_3d_horizons_e1_e2_surf WHERE tbl_3d_horizons_e1_e2_surf.geom &amp;&amp; ST_MakeEnvelope(%bboxcut%) GROUP BY id, name</sql>
+        <escapeSql>false</escapeSql>
+        <geometry>
+          <name>geom</name>
+          <type>MultiPolygon</type>
+          <srid>25833</srid>
+        </geometry>
+        <parameter>
+          <name>bboxcut</name>
+          <defaultValue>301755.3125,5791253.0625,324255.3125,5812253.0703125</defaultValue>
+          <regexpValidator>^[\w\d\s]+$</regexpValidator>
+        </parameter>
+      </virtualTable>
+    </entry>
+    <entry key="x3d.objectid">name</entry>
+  </metadata>
+  <store class="dataStore">
+    <id>DataStoreInfoImpl--3bc2b7f4:14087e75f8a:-20a1</id>
+  </store>
+  <maxFeatures>0</maxFeatures>
+  <numDecimals>0</numDecimals>
+</featureType>

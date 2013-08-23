@@ -1,0 +1,15 @@
+<layer>
+  <name>drills_2d</name>
+  <id>LayerInfoImpl--2e3c9ec6:1405ddd86cd:-7fff</id>
+  <type>VECTOR</type>
+  <defaultStyle>
+    <id>StyleInfoImpl--570ae188:124761b8d78:-7fdf</id>
+  </defaultStyle>
+  <resource class="featureType">
+    <id>FeatureTypeInfoImpl--2e3c9ec6:1405ddd86cd:-8000</id>
+  </resource>
+  <attribution>
+    <logoWidth>0</logoWidth>
+    <logoHeight>0</logoHeight>
+  </attribution>
+</layer>

@@ -1,0 +1,8 @@
+<w3ds>
+  <id>w3ds</id>
+  <enabled>true</enabled>
+  <name>W3DS</name>
+  <citeCompliant>false</citeCompliant>
+  <schemaBaseURL>http://schemas.opengis.net</schemaBaseURL>
+  <verbose>false</verbose>
+</w3ds>

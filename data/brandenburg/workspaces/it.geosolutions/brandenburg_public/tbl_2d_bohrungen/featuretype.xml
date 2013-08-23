@@ -1,0 +1,61 @@
+<featureType>
+  <id>FeatureTypeInfoImpl--2f827798:14057b37982:-7ffd</id>
+  <name>tbl_2d_bohrungen</name>
+  <nativeName>tbl_3d_horizons</nativeName>
+  <namespace>
+    <id>NamespaceInfoImpl--570ae188:124761b8d78:-7ffc</id>
+  </namespace>
+  <title>tbl_3d_cultural_linessets</title>
+  <keywords>
+    <string>poly</string>
+  </keywords>
+  <srs>EPSG:25833</srs>
+  <nativeBoundingBox>
+    <minx>247255.3125</minx>
+    <maxx>483505.312011719</maxx>
+    <miny>5688253.06933594</miny>
+    <maxy>5940003.0625</maxy>
+  </nativeBoundingBox>
+  <latLonBoundingBox>
+    <minx>11.184596144162532</minx>
+    <maxx>14.76316870787297</maxx>
+    <miny>51.2894209841496</miny>
+    <maxy>53.60858594713841</maxy>
+    <crs>GEOGCS[&quot;WGS84(DD)&quot;, 
+  DATUM[&quot;WGS84&quot;, 
+    SPHEROID[&quot;WGS84&quot;, 6378137.0, 298.257223563]], 
+  PRIMEM[&quot;Greenwich&quot;, 0.0], 
+  UNIT[&quot;degree&quot;, 0.017453292519943295], 
+  AXIS[&quot;Geodetic longitude&quot;, EAST], 
+  AXIS[&quot;Geodetic latitude&quot;, NORTH]]</crs>
+  </latLonBoundingBox>
+  <projectionPolicy>FORCE_DECLARED</projectionPolicy>
+  <enabled>true</enabled>
+  <advertised>true</advertised>
+  <metadata>
+    <entry key="x3d.defaultStyle">polygon</entry>
+    <entry key="time">
+      <dimensionInfo>
+        <enabled>false</enabled>
+      </dimensionInfo>
+    </entry>
+    <entry key="x3d.styles">[]</entry>
+    <entry key="x3d.queryable">true</entry>
+    <entry key="x3d.hLOD">false</entry>
+    <entry key="x3d.objectclass">[name]</entry>
+    <entry key="elevation">
+      <dimensionInfo>
+        <enabled>false</enabled>
+      </dimensionInfo>
+    </entry>
+    <entry key="cachingEnabled">false</entry>
+    <entry key="x3d.activate">true</entry>
+    <entry key="x3d.tiled">false</entry>
+    <entry key="x3d.objectid">name</entry>
+  </metadata>
+  <store class="dataStore">
+    <id>DataStoreInfoImpl--2f827798:14057b37982:-7ffe</id>
+  </store>
+  <maxFeatures>0</maxFeatures>
+  <numDecimals>0</numDecimals>
+</featureType>
