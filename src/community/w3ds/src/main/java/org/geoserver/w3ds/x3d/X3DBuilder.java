@@ -356,7 +356,7 @@ public class X3DBuilder {
 	}
 
 	public void writeX3D() throws IOException {
-		X3DNode x3d = new X3DNode("X3D");
+		X3DNode x3d = new X3DNode("X3D".toLowerCase());
 		x3d.addX3DNode(scene);
 		writer.write(x3d.toStringSpaces(""));
 	}

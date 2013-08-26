@@ -86,7 +86,7 @@ public class X3DPolygons extends X3DGeometry {
 		indexedFaceSet.addX3DNode(coordinate);
 		indexedFaceSet.addX3DAttribute(new X3DAttribute("coordIndex", this.getIndexis()));
 		indexedFaceSet.addX3DAttribute(new X3DAttribute("solid", "false"));
-		indexedFaceSet.addX3DAttribute(new X3DAttribute("convex", "false"));
+//		indexedFaceSet.addX3DAttribute(new X3DAttribute("convex", "false"));
 		indexedFaceSet.addX3DAttribute("creaseAngle", "0.3");
 		
 		if(this.appearance.isValid()) {

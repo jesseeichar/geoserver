@@ -180,7 +180,7 @@ public class X3DXmlWriter {
 		indexedFaceSet.addNode(coordinate);
 		indexedFaceSet.addAttribute(new Attribute("coordIndex", index));
 		indexedFaceSet.addAttribute(new Attribute("solid", "false"));
-		indexedFaceSet.addAttribute(new Attribute("convex", "false"));
+//		indexedFaceSet.addAttribute(new Attribute("convex", "false"));
 		shape.addNode(indexedFaceSet);
 
 		return shape;
@@ -221,7 +221,7 @@ public class X3DXmlWriter {
 		indexedFaceSet.addAttribute(new Attribute("coordIndex", indexis_txt
 				.toString()));
 		indexedFaceSet.addAttribute(new Attribute("solid", "false"));
-		indexedFaceSet.addAttribute(new Attribute("convex", "false"));
+//		indexedFaceSet.addAttribute(new Attribute("convex", "false"));
 		shape.addNode(indexedFaceSet);
 
 		return shape;
@@ -362,7 +362,7 @@ public class X3DXmlWriter {
 		indexedFaceSet.addNode(coordinate);
 		indexedFaceSet.addAttribute(new Attribute("coordIndex", indexis));
 		indexedFaceSet.addAttribute(new Attribute("solid", "false"));
-		indexedFaceSet.addAttribute(new Attribute("convex", "false"));
+//		indexedFaceSet.addAttribute(new Attribute("convex", "false"));
 		shape.addNode(indexedFaceSet);
 
 		return shape;
@@ -385,7 +385,7 @@ public class X3DXmlWriter {
 		indexedFaceSet.addNode(coordinate);
 		indexedFaceSet.addAttribute(new Attribute("coordIndex", indexis));
 		indexedFaceSet.addAttribute(new Attribute("solid", "false"));
-		indexedFaceSet.addAttribute(new Attribute("convex", "false"));
+//		indexedFaceSet.addAttribute(new Attribute("convex", "false"));
 		shape.addNode(indexedFaceSet);
 
 		return shape;
@@ -408,7 +408,7 @@ public class X3DXmlWriter {
 		indexedFaceSet.addNode(coordinate);
 		indexedFaceSet.addAttribute(new Attribute("coordIndex", indexis));
 		indexedFaceSet.addAttribute(new Attribute("solid", "false"));
-		indexedFaceSet.addAttribute(new Attribute("convex", "true"));
+//		indexedFaceSet.addAttribute(new Attribute("convex", "true"));
 		shape.addNode(indexedFaceSet);
 
 		return shape;

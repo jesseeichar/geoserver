@@ -158,7 +158,7 @@ public class X3DNode {
 			return this.text;
 		}
 		StringBuilder strb = new StringBuilder();
-		strb.append(tabs + "<" + tag);
+		strb.append(tabs + "<" + tag.toLowerCase());
 		for (X3DAttribute a : attributes) {
 			strb.append(" " + a.toString());
 		}
@@ -172,7 +172,7 @@ public class X3DNode {
 			for (X3DNode n : nodes) {
 				strb.append(n.toStringSpaces(tabs + "\t"));
 			}
-			strb.append(tabs + "</" + tag + ">\n");
+			strb.append(tabs + "</" + tag.toLowerCase() + ">\n");
 		}
 		return strb.toString();
 	}

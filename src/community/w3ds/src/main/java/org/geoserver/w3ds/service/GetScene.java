@@ -102,7 +102,7 @@ public class GetScene {
 		hints.put(Query.INCLUDE_MANDATORY_PROPS, true);
 		hints.put(Hints.FEATURE_2D, Boolean.FALSE);
 		List<Map<String, String>> viewParams = request.getViewParams();
-                if (viewParams != null & !viewParams.isEmpty()) {
+        if (viewParams != null && !viewParams.isEmpty()) {
 		    hints.put(Hints.VIRTUAL_TABLE_PARAMETERS, viewParams.get(layerIndex));
 		}
 		query.setHints(hints);
