@@ -11,6 +11,11 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import bak.pcj.map.LongKeyChainedHashMap;
+import bak.pcj.map.LongKeyIntChainedHashMap;
+import bak.pcj.map.LongKeyIntMap;
+import bak.pcj.map.LongKeyMap;
+
 import com.vividsolutions.jts.geom.Coordinate;
 
 public abstract class X3DGeometry {
@@ -18,7 +23,7 @@ public abstract class X3DGeometry {
 	private X3DGeometryType type;
 	private StringBuilder points;
 	private StringBuilder indexis;
-	private Map<Integer, Integer> pointsIndexis;
+	private LongKeyIntMap pointsIndexis;
 	private int index;
 
 	protected X3DNode appearance;
@@ -31,7 +36,7 @@ public abstract class X3DGeometry {
 		this.type = type;
 		this.points = new StringBuilder();
 		this.indexis = new StringBuilder();
-		this.pointsIndexis = new HashMap<Integer, Integer>();
+		this.pointsIndexis = new LongKeyIntChainedHashMap();
 		this.index = -1;
 		this.coordinatesType = X3DDefinitions.GEOGRAPHIC_METRIC.getCode();
 		this.geoSystem = null;
@@ -44,7 +49,7 @@ public abstract class X3DGeometry {
 		this.type = type;
 		this.points = new StringBuilder();
 		this.indexis = new StringBuilder();
-		this.pointsIndexis = new HashMap<Integer, Integer>();
+		this.pointsIndexis = new LongKeyIntChainedHashMap();
 		this.index = -1;
 		this.coordinatesType = X3DDefinitions.GEOGRAPHIC_DEGREES.getCode();
 		this.geoSystem = geoSystem;
@@ -58,7 +63,7 @@ public abstract class X3DGeometry {
 		this.type = type;
 		this.points = new StringBuilder();
 		this.indexis = new StringBuilder();
-		this.pointsIndexis = new HashMap<Integer, Integer>();
+		this.pointsIndexis = new LongKeyIntChainedHashMap();
 		this.index = -1;
 		this.coordinatesType = coordinatesType;
 		this.geoSystem = geoSystem;
@@ -125,6 +130,7 @@ public abstract class X3DGeometry {
 					this.points.append(x + " ");
 				}
 				this.index++;
+
 				this.pointsIndexis
 						.put(this.getHashCode(coordinate), this.index);
 				this.indexis.append(this.index + " ");
@@ -138,8 +144,8 @@ public abstract class X3DGeometry {
 			if (coordinate.z == Double.NaN) {
 				coordinate.z = 0;
 			}
-			if (this.pointsIndexis.containsKey(coordinate)) {
-				this.indexis.append(pointsIndexis.get(coordinate) + " ");
+			if (this.pointsIndexis.containsKey(getHashCode(coordinate))) {
+				this.indexis.append(pointsIndexis.get(getHashCode(coordinate)) + " ");
 				this.index++;
 			} else {
 				this.coordinates.add(coordinate);
@@ -167,8 +173,8 @@ public abstract class X3DGeometry {
 		return index != -1;
 	}
 
-	private int getHashCode(Coordinate coordinate) {
-		int result = 17;
+	private long getHashCode(Coordinate coordinate) {
+		long result = 17;
 		result = 37 * result + hashCode(coordinate.x);
 		result = 37 * result + hashCode(coordinate.y);
 		result = 37 * result + hashCode(coordinate.z);
@@ -176,9 +182,8 @@ public abstract class X3DGeometry {
 		return result;
 	}
 
-	private int hashCode(double x) {
-		long f = Double.doubleToLongBits(x);
-		return (int) (f ^ (f >>> 32));
+	private long hashCode(double x) {
+		return Double.doubleToLongBits(x);
 	}
 
 	public X3DGeometryType getType() {

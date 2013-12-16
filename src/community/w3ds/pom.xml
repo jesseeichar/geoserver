@@ -17,6 +17,11 @@
 			<artifactId>main</artifactId>
 		</dependency>
 		<dependency>
+			<groupId>pcj</groupId>
+			<artifactId>pcj</artifactId>
+			<version>1.2</version>
+		</dependency>
+		<dependency>
 			<groupId>com.mockrunner</groupId>
 			<artifactId>mockrunner</artifactId>
 			<scope>test</scope>
