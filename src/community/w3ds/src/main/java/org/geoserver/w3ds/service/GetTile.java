@@ -41,7 +41,7 @@ import org.opengis.filter.expression.Literal;
 import org.opengis.filter.expression.PropertyName;
 import org.opengis.referencing.crs.CoordinateReferenceSystem;
 
-public class GetTile {
+public class GetTile implements W3DSRequestStrategy {
 
 	private GeoServer geoServer;
 	private Catalog catalog;

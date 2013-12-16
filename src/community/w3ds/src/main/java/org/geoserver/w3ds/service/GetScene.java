@@ -37,7 +37,7 @@ import org.opengis.geometry.Envelope;
 import org.opengis.referencing.ReferenceIdentifier;
 import org.opengis.referencing.crs.CoordinateReferenceSystem;
 
-public class GetScene {
+public class GetScene implements W3DSRequestStrategy {
 
 	private GeoServer geoServer;
 	private Catalog catalog;
